@@ -1,0 +1,122 @@
+# Ruff configuration file.
+#
+# Reference:
+#   https://github.com/astral-sh/ruff
+#   https://docs.astral.sh/ruff/
+
+# Paths that ruff should ignore when linting and formatting.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv"
+]
+
+# Do not automatically fix errors unless the "--fix" flag is explicitly set.
+fix = false
+
+# Number of spaces added per indention level.
+indent-width = 4
+
+# Number of characters allowed per line.
+line-length = 100
+
+# Directories that contain first-party imports.
+src = ["src", "tests"]
+
+# Minimum Python version that automatic code upgrades should comply with.
+target-version = "py311"
+
+# Rule codes and prefixes that ruff should ignore when linting and formatting.
+ignore = [
+    "SIM108",  # Complicates code by forcing the use of ternary expressions.
+]
+
+# Rule codes and prefixes that ruff should enforce when linting and formatting.
+select = [
+    # Essential tools that we should not disable.
+    "I",      # isort
+    "E",      # pycodestyle
+    "W",      # pycodestyle
+    "F",      # pyflakes
+
+    # Essential tools that we should use, but can optionally disable.
+    "B",      # flake8-bugbear
+    "C90",    # mccabe
+    "N",      # pep8-naming
+    "RUF",    # ruff
+
+    # Optional tools that are helpful, but not required.
+    "ERA",    # eradicate
+    "A",      # flake8-builtins
+    "COM",    # flake8-commas
+    "FIX",    # flake8-fixme
+    "PT",     # flake8-pytest-style
+    "RSE",    # flake8-raise
+    "SIM",    # flake8-simplify
+    "TD",     # flake8-todos
+    "ARG",    # flake8-unused-arguments
+    "FLY",    # flynt
+    "UP",     # pyupgrade
+
+    # Optional tools for niche use cases, which are disabled by default.
+    # "AIR",    # apache-airflow
+    # "YTT",    # flake8-2020
+    # "ANN",    # flake8-annotations
+    # "ASYNC",  # flake8-async
+    # "S",      # flake8-bandit
+    # "BLE",    # flake8-blind-except
+    # "FBT",    # flake8-boolean-trap
+    # "C4",     # flake8-comprehensions
+    # "DTZ",    # flake8-datetimez
+    # "T10",    # flake8-debugger
+    # "DJ",     # flake8-django
+    # "EM",     # flake8-errmsg
+    # "EXE",    # flake8-executable
+    # "FA",     # flake8-future-annotations
+    # "INT",    # flake8-gettext
+    # "ISC",    # flake8-implicit-str-concat
+    # "ICN",    # flake8-import-conventions
+    # "G",      # flake8-logging-format
+    # "INP",    # flake8-no-pep420
+    # "PIE",    # flake8-pie
+    # "T20",    # flake8-print
+    # "PYI",    # flake8-pyi
+    # "Q",      # flake8-quotes
+    # "RET",    # flake8-return
+    # "SLF",    # flake8-self
+    # "SLOT",   # flake8-slots
+    # "TID",    # flake8-tidy-imports
+    # "TCH",    # flake8-type-checking
+    # "PTH",    # flake8-use-pathlib
+    # "NPY",    # numpy
+    # "PD",     # pandas-vet
+    # "PERF",   # perflint
+    # "D",      # pydocstyle
+    # "PGH",    # pygrep-hooks
+    # "PL",     # pylint
+    # "TRY",    # tryceratops
+
+    # Unstable tools that require the "--preview" flag to be explicitly set.
+    # "CPY",    # flake8-copyright
+    # "LOG",    # flake8-logging
+    # "TRIO",   # flake8-trio
+    # "FURB",   # refurb
+]

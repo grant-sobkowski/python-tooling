@@ -1,0 +1,54 @@
+# Configuration file for the Mypy static type checker.
+#
+# Reference (Mypy):
+#   https://github.com/python/mypy
+#   https://mypy.readthedocs.io/
+#
+# Reference (Pydantic Plugin):
+#   https://github.com/pydantic/pydantic/blob/main/pydantic/mypy.py
+#   https://docs.pydantic.dev/latest/integrations/mypy/
+
+[tool.mypy]
+
+# Check function interiors, even if they do not have type annotations
+check_untyped_defs = false
+
+# Throw an error if we partially type-annotate a function
+disallow_incomplete_defs = true
+
+# Throw an error if we call an un-typed function from a typed one
+disallow_untyped_calls = true
+
+# Throw an error if an un-typed decorator wraps a typed function
+disallow_untyped_decorators = false
+
+# Regex patterns for files that mypy should ignore
+# exclude = ['config']
+
+# Do not throw errors when we can not resolve an import
+ignore_missing_imports = true
+
+# Throw an error when a function is missing a return statement
+warn_no_return = true
+
+# Throw an error when we case a value to its inferred type
+warn_redundant_casts = true
+
+# Throw an error when returning an `Any` typed value from a function that does not return `Any`
+warn_return_any = false
+
+# Throw an error if we write code that is unreachable
+warn_unreachable = true
+
+# Throw an error if we ignore a line that does not violate any rules
+warn_unused_ignores = true
+
+
+[[tool.mypy.overrides]]
+
+# Override that throws error when we can not resolve first-party imports
+ignore_missing_imports = false
+
+# Apply these overrides to first-party packages
+# module = ['<root-module>.*']
+

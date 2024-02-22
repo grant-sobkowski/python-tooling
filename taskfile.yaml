@@ -1,0 +1,48 @@
+# Set the taskfile's schema version
+version: "3"
+
+# Do not broadcast task identifiers and commands
+silent: true
+
+# Define the tasklist's global variables
+vars:
+  CFG_RUFF: .ruff.toml
+  CFG_MYPY: .mypy.toml
+
+# Define the taskfile's tasks
+tasks:
+  help:
+    desc: Show available tasks
+    aliases: [default]
+    dir: "{{.TASKFILE_DIR}}"
+    cmds:
+      - task --list-all
+
+  install:
+    desc: Prepare a development environment
+    dir: "{{.TASKFILE_DIR}}"
+    cmds:
+      - echo "Creating a virtual environment and installing dependencies."
+      - poetry install --all-extras
+
+  lint:
+    desc: Run linter
+    dir: "{{.TASKFILE_DIR}}"
+    cmds:
+      - echo "Linting the package's source code."
+      - poetry run ruff check --config {{.CFG_RUFF}} ./
+
+  lint-fix:
+    desc: Run linter and formatter
+    dir: "{{.TASKFILE_DIR}}"
+    cmds:
+      - echo "Linting and formatting the package's source code."
+      - poetry run ruff check --fix --config {{.CFG_RUFF}} ./
+
+  mypy:
+    desc: Run static type checker
+    dir: "{{.TASKFILE_DIR}}"
+    cmds:
+      - echo "Running a static type checker against the package's source code."
+      - poetry run mypy --config-file {{.CFG_MYPY}} ./
+
